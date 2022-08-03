@@ -4,16 +4,30 @@ using UnityEngine;
 
 public class ShelfSpawner : MonoBehaviour
 {
+    //I pass in a Shelf and ShelfObject explicitly here just so it's easier to test
+    //Note that below, the actual SpawnShelf function takes in a Shelf and an array of ShelfObjects, so it could
+    //be called from some other class which determines *which* shelf and *which kinds of objects* should appear on it
+    [Header("Debug References")]
     public Shelf Shelf;
     public ShelfObject[] Objects;
+    
+    [Header("Config")]
+    //The gap between the objects
     [Range(0f, 0.25f)] public float Gap = 0.05f;
+    
+    //Random Z positional jitter, so objects aren't always aligned in perfect rows
     [Range(0f, 0.25f)] public float JitterZ = 0.05f;
+    
+    //A little bit of random Y rotation to make things look slightly less neat and perfect
     [Range(0f, 90f)] public float RandomRotation = 5f;
 
+    //This is a function that uses my debug references from above to spawn a random shelf at a random position and rotation
     [ContextMenu("Test Spawn")]
     public void TestSpawn()
     {
-        SpawnShelf(Shelf, Objects);
+        var pos = Random.insideUnitCircle * 10f;
+        var rot = Quaternion.Euler(0f, Random.value * 360f, 0f);
+        SpawnShelf(Shelf, Objects, new Vector3(pos.x, 0f, pos.y), rot);
     }
 
     [ContextMenu("Spawn Lots")]
@@ -22,13 +36,11 @@ public class ShelfSpawner : MonoBehaviour
         
     }
 
-    public void SpawnShelf(Shelf shelf, ShelfObject[] objects)
+    public void SpawnShelf(Shelf shelf, ShelfObject[] objects, Vector3 position, Quaternion rotation)
     {
-        //Place the shelf at a random position and rotation on the ground
-        var shelfPos = Random.insideUnitCircle * 10f;
         var shelfObj = Instantiate(shelf.Prefab);
-        shelfObj.transform.position = new Vector3(shelfPos.x, 0f, shelfPos.y);
-        shelfObj.transform.rotation = Quaternion.Euler(0f, Random.value * 360f, 0f);
+        shelfObj.transform.position = position;
+        shelfObj.transform.rotation = rotation;
         shelfObj.transform.parent = transform;
         
         //For each actual shelf in the set of shelves
