@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 644dd49131a0de446bba18bf9f4552a9, type: 3}
-  m_Name: GreenBag
+  m_Script: {fileID: 11500000, guid: e09e18123fccbe94c835e3747078880d, type: 3}
+  m_Name: DataScript
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 163552, guid: 006f68bc96878b04e9657bc5fcecb726, type: 3}
-  Size: {x: 0.5304057, y: 0.5712062, z: 0.7752084}
-  Center: {x: 0.00026255846, y: 0.2675714, z: 0}
