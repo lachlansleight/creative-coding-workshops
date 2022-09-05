@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &487844790668310518
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 487844790668310520}
+  - component: {fileID: 487844790668310521}
+  - component: {fileID: 487844790668310523}
+  m_Layer: 0
+  m_Name: SoundCapture
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &487844790668310520
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487844790668310518}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &487844790668310521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487844790668310518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15f02d1341ed26c40b74af1242da228e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FftBinCount: 20
+  MinimumFrequency: 20
+  MaximumFrequency: 3000
+  Latency: 20
+  FftSize: 4096
+  DeviceName: Speakers (Focusrite Usb Audio)
+  AverageVolume: 0
+  PeakVolume: 0
+  BarData: []
+--- !u!114 &487844790668310523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487844790668310518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b30020dfe02cdb4bbe28639569c0910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Audio: {fileID: 487844790668310521}
+  DataSource: 1
+  FrequencyBin: 0
+  Momentary: 0
+  HalfSecondAverage: 0
+  OneSecondAverage: 0
+  FiveSecondAverage: 0
+  TenSecondAverage: 0
+  ThirtySecondAverage: 0
+  Flicker: 0
+  Pulse: 0
+  Vibe: 0
