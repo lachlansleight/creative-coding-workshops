@@ -45,10 +45,13 @@ public class ProceduralQuad : MonoBehaviour
         _uvs[1] = new Vector2(0f, 1f);
         _uvs[2] = new Vector2(1f, 1f);
         _uvs[3] = new Vector2(1f, 0f);
+        _colors[0] = Color.red;
+        _colors[1] = Color.green;
+        _colors[2] = Color.yellow;
+        _colors[3] = Color.blue;
         
         for (var i = 0; i < 4; i++) {
             _normals[i] = Vector3.up;
-            _colors[i] = Color.white;
         }
 
         _indices[0] = 0;
@@ -69,6 +72,7 @@ public class ProceduralQuad : MonoBehaviour
         _mesh.SetColors(_colors);
         _mesh.SetUVs(0, _uvs);
         _mesh.SetIndices(_indices, MeshTopology.Triangles, 0);
+        
         _mesh.RecalculateBounds();
         _mesh.RecalculateTangents();
         _mesh.RecalculateNormals();
