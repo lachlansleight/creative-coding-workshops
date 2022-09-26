@@ -1,0 +1,56 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+#include "./ScaryMath.hlsl"
+
+//Note that this has to match EXACTLY the struct we defined in ComputeShaderSystem.cs!
+//Obviously, with HLSL types instead of C#
+struct InstanceData {
+    float3 position;
+    float4 rotation;
+    float scale;
+    float3 velocity;
+    float4 color;
+    float padding;
+};
+
+//The compute buffer that holds all of our instances
+RWStructuredBuffer<InstanceData> _InstanceBuffer;
+
+//Here is where we define shader properties - exactly like any other shader
+float _DeltaTime;
+float _VelocityDamping;
+float3 _AttractorPosition;
+float _AttractorStrength;
+float _Scale;
+
+[numthreads(64,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    //Using the thread group ID, we extract our position in the buffer and get the instance from position
+    //With more dimensionality in our group sizes, this is a little more complex, but here's it's easy! :D
+    uint index = id.x;
+    InstanceData cur = _InstanceBuffer[index];
+    
+    //Add attractor force to velocity
+    //This is kind of like a local gravity force, so its strength attenuates with distance
+    float3 toAttractor = _AttractorPosition - cur.position;
+    float attractorDistance = length(toAttractor);
+    float3 attractorForce = normalize(toAttractor) * _AttractorStrength / (attractorDistance + 0.05); //**
+    cur.velocity += attractorForce * _DeltaTime;
+    
+    //Damp velocity (simulating friction)
+    cur.velocity = lerp(cur.velocity, float3(0, 0, 0), _DeltaTime * _VelocityDamping);
+    
+    //Add velocity to position
+    cur.position += _DeltaTime * cur.velocity;
+    
+    //Look in the direction we're moving - note this function comes from ScaryMath.hlsl
+    cur.rotation = lookRotation(normalize(cur.velocity + float3(0, 0, 0.000001)), float3(0, 1, 0));
+    
+    //Allow the scale to be tweaked with the inspector
+    cur.scale = _Scale;
+    
+    //Finally, we supply the modified data back into the buffer
+    _InstanceBuffer[index] = cur;
+}
