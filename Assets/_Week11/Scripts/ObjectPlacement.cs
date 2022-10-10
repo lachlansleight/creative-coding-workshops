@@ -73,8 +73,13 @@ public class ObjectPlacement : MonoBehaviour
             var colliders = _objectBeingPlaced.GetComponentsInChildren<Collider>();
             foreach(var c in colliders) c.enabled = true;
 
-            //start growing!
-            _objectBeingPlaced.GetComponent<TreeGrowth>().IsGrowing = true;
+            //start growing - if it's a tree
+            var tree =_objectBeingPlaced.GetComponent<TreeGrowth>(); 
+            if(tree != null) tree.IsGrowing = true;
+            
+            //do lightning strike - if it's lightning
+            var lightning = _objectBeingPlaced.GetComponent<Lightning>();
+            if (lightning != null) lightning.Strike();
             
             _objectBeingPlaced = null;
             _isPlacingObject = false;
