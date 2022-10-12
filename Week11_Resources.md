@@ -1,0 +1,9 @@
+# Week 11
+
+### Resources
+
+  * [Intermediate Gameplay Scripting](https://learn.unity.com/project/intermediate-gameplay-scripting) - This is how I originally learned about Polymorphism, and after spending a little time snooping around YouTube, I haven't found another resource that explains all the necessary concepts to my satisfaction. The relevant videos in the series are the videos from Generics through to Interfaces. Although if you're so inclined, the rest of these videos are also quite good.
+  * [How to use INHERITANCE (C#) to create more characters' behaviors in Unity](https://www.youtube.com/watch?v=Vt_vyRpVeK0) - A very practical example of how inheritance (one of the sub-topics within Polymorphism) can be used to create a more modular and flexible codebase in Unity. 
+  * [RimWorld: Contrarian, Ridiculous, and Impossible Game Design Methods](https://www.youtube.com/watch?v=VdqhHKjepiE) - Not entirely super-relevant to class this week, but god damn I love this talk.
+  * [Narrative Sorcery: Coherent Storytelling in an Open World](https://www.youtube.com/watch?v=HZft_U4Fc-U) - A talk going into a lot more detail regarding ways that you can have some level of an emergent narrative by blending some high-level system design with pre-authored narrative content. Very interesting and practical! While it talks about this in the context of an open-world, the exact same thing can apply to a game with branching linear paths.
+  * [Would the Real Emergent Gameplay Please Stand Up?](https://www.youtube.com/watch?v=yLVceaULKLU) - A timeless talk about the ways that we can create emergent gameplay through the use of systems design. I love how 2004 it looks. They don't make talks like this anymore, folks.
